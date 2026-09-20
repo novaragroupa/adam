@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>السيرة الذاتية | آدم إسماعيل</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-title="cvPage.title">
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="page-crumb" data-i18n="nav.home">الرئيسية</span>
+      <h1 data-i18n="cvPage.title">السيرة الذاتية</h1>
+      <p data-i18n="cvPage.subtitle">نظرة شاملة</p>
+      <div style="margin-top:26px;">
+        <a href="CV-Adam-Ismail.pdf" download class="btn btn-primary">
+          <span>⬇</span><span data-i18n="cvPage.downloadBtn">تحميل السيرة الذاتية PDF</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand" style="padding-top:56px;">
+    <div class="container" style="max-width:900px;">
+      <div class="cv-wrap">
+
+        <div class="cv-top">
+          <div class="cv-top-id">
+            <span class="cv-photo"><img src="adam-profile.jpg" alt="آدم إسماعيل"></span>
+            <div>
+              <h3 style="margin:0;" data-i18n="header.name">آدم إسماعيل محمد علي</h3>
+              <div style="color:var(--aqua); font-weight:600; font-size:.9rem;" data-i18n="header.role">مدرب سباحة</div>
+            </div>
+          </div>
+          <a href="CV-Adam-Ismail.pdf" download class="btn btn-dark" style="padding:11px 20px; font-size:.85rem;">
+            <span data-i18n="cvPage.downloadBtn">تحميل PDF</span>
+          </a>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.personalTitle">البيانات الشخصية</h2>
+          <div id="personalRows"></div>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.qualificationsTitle">المؤهلات العلمية</h2>
+          <div id="qualificationsList"></div>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.skillsTitle">المهارات</h2>
+          <div class="pill-list" id="skillsList"></div>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.coursesTitle">الدورات التدريبية</h2>
+          <p id="coursesNote" style="color:var(--ink-soft); margin-bottom:10px;"></p>
+          <a href="courses.html" class="btn btn-dark" style="padding:10px 20px; font-size:.85rem;" data-i18n="nav.courses">الدورات التدريبية</a>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.experienceTitle">الخبرات العملية</h2>
+          <p id="experienceNote" style="color:var(--ink-soft); margin-bottom:10px;"></p>
+          <a href="experience.html" class="btn btn-dark" style="padding:10px 20px; font-size:.85rem;" data-i18n="nav.experience">الخبرات السابقة</a>
+        </div>
+
+        <div class="cv-section">
+          <h2 data-i18n="cvPage.researchTitle">بحث علمي منشور</h2>
+          <div class="research-box" id="researchBox"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+<script>
+function renderPageContent(lang){
+  const cv = SITE_DATA.cvPage[lang];
+
+  document.getElementById('personalRows').innerHTML = cv.personal.map(p => {
+    const isNumeric = /^[0-9+\/ ]+$/.test(p.value.trim());
+    return `<div class="cv-row"><span class="k">${p.label}</span><span class="v${isNumeric ? ' ltr-num' : ''}">${p.value}</span></div>`;
+  }).join('');
+
+  document.getElementById('qualificationsList').innerHTML = cv.qualifications.map(q => `
+    <div class="qual-item">
+      <div class="degree">${q.degree}</div>
+      <div class="place">${q.place}</div>
+      <div class="year">${q.year}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('skillsList').innerHTML = cv.skills.map(s => `<span class="pill">${s}</span>`).join('');
+
+  document.getElementById('coursesNote').textContent = cv.coursesNote;
+  document.getElementById('experienceNote').textContent = cv.experienceNote;
+  document.getElementById('researchBox').textContent = cv.researchText;
+}
+window.renderPageContent = renderPageContent;
+</script>
+</body>
+</html>

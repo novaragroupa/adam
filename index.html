@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>آدم إسماعيل | مدرب سباحة ومدرب إعداد بدني</title>
+<meta name="description" content="آدم إسماعيل محمد علي — مدرب سباحة ومدرب إعداد بدني، ماجستير تربية رياضية، خبرة أكثر من 15 عامًا في تدريب السباحين وإعدادهم للمنافسات.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-title="">
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow" data-i18n="hero.eyebrow">مدرب سباحة معتمد</span>
+        <h1 data-i18n="hero.title">صناعة البطل تبدأ من التدريب الصحيح</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">آدم إسماعيل محمد علي — مدرب سباحة ومدرب إعداد بدني</p>
+        <div class="hero-actions">
+          <a href="experience.html" class="btn btn-primary" data-i18n="hero.ctaPrimary">اكتشف خبراتي</a>
+          <a href="gallery.html" class="btn btn-ghost" data-i18n="hero.ctaSecondary">شاهد إنجازاتي</a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-media-main">
+          <img src="hero-swimmer-action.jpg" alt="سباح أثناء التدريب">
+        </div>
+        <div class="hero-media-tag" id="heroMediaTag">
+          <span class="dot"></span>
+          <span id="heroMediaTagText">15+ عامًا من الخبرة</span>
+        </div>
+      </div>
+    </div>
+    <div class="wave-divider">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none"><path fill="#F4F9FA" d="M0,64 C240,10 480,10 720,42 C960,74 1200,74 1440,32 L1440,90 L0,90 Z"></path></svg>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid" id="statsGrid"></div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="section section-sand">
+    <div class="container">
+      <div class="vision-layout">
+        <div class="vision-image">
+          <img src="hero-coach-swimmer.jpg" alt="المدرب مع أحد السباحين">
+        </div>
+        <div>
+          <span class="eyebrow" data-i18n="vision.title">رؤية المدرب</span>
+          <h2 class="section-title" data-i18n="vision.title">رؤية المدرب</h2>
+          <p class="vision-statement" data-i18n="vision.statement">بناء منظومة تدريبية متكاملة...</p>
+          <div class="vision-cards" id="visionCards"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="teaser">
+        <div class="teaser-media">
+          <img src="adam-profile.jpg" alt="آدم إسماعيل">
+        </div>
+        <div class="teaser-text">
+          <span class="eyebrow" data-i18n="homeSections.aboutTeaser.eyebrow">تعرف عليّ</span>
+          <h2 data-i18n="homeSections.aboutTeaser.title">مدرب سباحة بخبرة أكاديمية وميدانية</h2>
+          <p data-i18n="homeSections.aboutTeaser.text">نبذة</p>
+          <a href="about.html" class="btn btn-dark" data-i18n="homeSections.aboutTeaser.cta">المعلومات الأساسية</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY TEASER -->
+  <section class="section section-sand">
+    <div class="container">
+      <div class="teaser reverse">
+        <div class="teaser-media">
+          <img src="gallery-05.jpg" alt="سباحون">
+        </div>
+        <div class="teaser-text">
+          <span class="eyebrow" data-i18n="homeSections.galleryTeaser.eyebrow">لحظات من الملعب</span>
+          <h2 data-i18n="homeSections.galleryTeaser.title">سباحون صنعوا الفارق</h2>
+          <p data-i18n="homeSections.galleryTeaser.text">نبذة</p>
+          <a href="gallery.html" class="btn btn-dark" data-i18n="homeSections.galleryTeaser.cta">مشاهدة المعرض</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-navy">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow" data-i18n="contact.title">تواصل معي</span>
+        <h2 class="section-title" data-i18n="contact.title">تواصل معي</h2>
+        <p class="section-sub" data-i18n="contact.subtitle">نبذة</p>
+      </div>
+      <div class="contact-grid" id="contactGrid"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+<script>
+function renderPageContent(lang){
+  const stats = SITE_DATA.stats[lang];
+  document.getElementById('heroMediaTagText').textContent = stats[0].number + ' ' + stats[0].label;
+  document.getElementById('statsGrid').innerHTML = stats.map(s =>
+    `<div class="stat-item"><div class="stat-number">${s.number}</div><div class="stat-label">${s.label}</div></div>`
+  ).join('');
+
+  const vision = SITE_DATA.vision[lang];
+  document.getElementById('visionCards').innerHTML = vision.cards.map((c,i) =>
+    `<div class="vision-card"><span class="num">0${i+1}</span><h3>${c.title}</h3><p>${c.text}</p></div>`
+  ).join('');
+
+  const c = SITE_DATA.contact[lang];
+  const items = [
+    { icon:'💬', label:c.whatsapp, value:c.whatsappValue, href:`https://wa.me/${c.whatsappValue.replace('+','')}` },
+    { icon:'📞', label:c.phone, value:c.phoneValue, href:`tel:${c.phoneValue}` },
+    { icon:'✉️', label:c.email, value:c.emailValue, href:`mailto:${c.emailValue}` },
+  ];
+  if (c.facebookUrl) items.push({ icon:'📘', label:c.facebook, value: (lang==='ar'?'صفحة الفيسبوك':'Facebook Page'), href:c.facebookUrl });
+  if (c.instagramUrl) items.push({ icon:'📷', label:c.instagram, value: (lang==='ar'?'صفحة الإنستغرام':'Instagram Page'), href:c.instagramUrl });
+  if (c.youtubeUrl) items.push({ icon:'▶️', label:c.youtube, value: (lang==='ar'?'قناة اليوتيوب':'YouTube Channel'), href:c.youtubeUrl });
+  document.getElementById('contactGrid').innerHTML = items.map(it => {
+    const isNumeric = /^[0-9+@.a-zA-Z_/ -]+$/.test(it.value.trim());
+    return `<a class="contact-card" href="${it.href}" target="_blank" rel="noopener">
+       <span class="contact-icon">${it.icon}</span>
+       <span><span class="label" style="display:block;">${it.label}</span><span class="value${isNumeric ? ' ltr-num' : ''}">${it.value}</span></span>
+     </a>`;
+  }).join('');
+}
+window.renderPageContent = renderPageContent;
+</script>
+</body>
+</html>

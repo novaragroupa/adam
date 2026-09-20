@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المعلومات الأساسية | آدم إسماعيل</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-title="about.pageTitle">
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="page-crumb" data-i18n="nav.home">الرئيسية</span>
+      <h1 data-i18n="about.pageTitle">المعلومات الأساسية</h1>
+      <p data-i18n="about.pageSubtitle">نبذة تعريفية</p>
+    </div>
+  </section>
+
+  <section class="section section-sand" style="padding-top:56px;">
+    <div class="container">
+      <div class="info-layout">
+        <div class="info-photo-card">
+          <img src="adam-profile.jpg" alt="آدم إسماعيل محمد علي">
+          <div class="pad">
+            <h3 data-i18n="header.name">آدم إسماعيل محمد علي</h3>
+            <div class="role" data-i18n="header.role">مدرب سباحة ومدرب إعداد بدني</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="field-grid" id="fieldGrid"></div>
+
+          <h3 style="margin-bottom:18px;" data-i18n="about.specialtiesTitle">مجالات التخصص</h3>
+          <ul class="check-list" id="specialtiesList" style="margin-bottom:40px;"></ul>
+
+          <h3 style="margin-bottom:8px;" data-i18n="about.clubsTitle">أحدث الجهات</h3>
+          <p style="color:var(--ink-soft); font-size:.92rem; margin-bottom:16px;" data-i18n="about.clubsNote">ملاحظة</p>
+          <div class="pill-list" id="clubsList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+<script>
+function renderPageContent(lang){
+  const a = SITE_DATA.about[lang];
+
+  document.getElementById('fieldGrid').innerHTML = a.fields.map(f => {
+    const isNumeric = /^[0-9+\/ ]+$/.test(f.value.trim());
+    return `<div class="field-card"><div class="label">${f.label}</div><div class="value${isNumeric ? ' ltr-num' : ''}">${f.value}</div></div>`;
+  }).join('');
+
+  document.getElementById('specialtiesList').innerHTML = a.specialties.map(s =>
+    `<li><span class="ic">✓</span><span>${s}</span></li>`
+  ).join('');
+
+  document.getElementById('clubsList').innerHTML = a.clubs.map(c =>
+    `<span class="pill">${c}</span>`
+  ).join('');
+}
+window.renderPageContent = renderPageContent;
+</script>
+</body>
+</html>
