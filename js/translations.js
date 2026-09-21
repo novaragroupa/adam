@@ -530,7 +530,7 @@ const SITE_DATA = {
       youtube: "يوتيوب",
       whatsappValue: "+201285524631",
       phoneValue: "01285524631",
-      emailValue: "coach.adam.swim@gmail.com",
+      emailValue: "adamismail1619@gmail.com",
       facebookUrl: "https://www.facebook.com/share/19VVB1u3Ha/",
       instagramUrl: "",
       youtubeUrl: ""
@@ -546,7 +546,7 @@ const SITE_DATA = {
       youtube: "YouTube",
       whatsappValue: "+201285524631",
       phoneValue: "01285524631",
-      emailValue: "coach.adam.swim@gmail.com",
+      emailValue: "adamismail1619@gmail.com",
       facebookUrl: "https://www.facebook.com/share/19VVB1u3Ha/",
       instagramUrl: "",
       youtubeUrl: ""
