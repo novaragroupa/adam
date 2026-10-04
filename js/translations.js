@@ -312,8 +312,8 @@ const SITE_DATA = {
         "إجراء مزيد من الدراسات والأبحاث على طرق السباحة الأخرى."
       ],
       docs: [
-        { title: "الإطار العام للبحث", desc: "المقدمة ومشكلة البحث، الهدف، الفروض، والمصطلحات — باللغة العربية.", file: "pdf/thesis-arabic.pdf", badge: "العربية" },
-        { title: "Research Introduction and Problems", desc: "المقدمة والمشكلة والإجراءات والاستنتاجات والتوصيات — ترجمة معتمدة بالإنجليزية.", file: "pdf/thesis-english.pdf", badge: "English" }
+        { title: "الإطار العام للبحث", desc: "المقدمة ومشكلة البحث، الهدف، الفروض، والمصطلحات — باللغة العربية.", file: "thesis-arabic.pdf", badge: "العربية" },
+        { title: "Research Introduction and Problems", desc: "المقدمة والمشكلة والإجراءات والاستنتاجات والتوصيات — ترجمة معتمدة بالإنجليزية.", file: "thesis-english.pdf", badge: "English" }
       ]
     },
     en: {
@@ -359,8 +359,8 @@ const SITE_DATA = {
         "Conduct further studies on other swimming strokes."
       ],
       docs: [
-        { title: "General Research Framework", desc: "Introduction and problem, objective, hypotheses and terminology — in Arabic.", file: "pdf/thesis-arabic.pdf", badge: "العربية" },
-        { title: "Research Introduction and Problems", desc: "Introduction, problem, procedures, conclusions and recommendations — certified English translation.", file: "pdf/thesis-english.pdf", badge: "English" }
+        { title: "General Research Framework", desc: "Introduction and problem, objective, hypotheses and terminology — in Arabic.", file: "thesis-arabic.pdf", badge: "العربية" },
+        { title: "Research Introduction and Problems", desc: "Introduction, problem, procedures, conclusions and recommendations — certified English translation.", file: "thesis-english.pdf", badge: "English" }
       ]
     }
   },
