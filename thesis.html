@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>رسالة الماجستير | آدم إسماعيل</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏊</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page-title="thesisPage.title">
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <span class="page-crumb" data-i18n="nav.home">الرئيسية</span>
+      <h1 data-i18n="thesisPage.title">رسالة الماجستير</h1>
+      <p data-i18n="thesisPage.subtitle">بحث علمي في تدريب السباحة</p>
+    </div>
+  </section>
+
+  <section class="section section-sand" style="padding-top:56px;">
+    <div class="container">
+
+      <div class="thesis-title-box">
+        <span class="eyebrow" data-i18n="thesisPage.eyebrow">البحث العلمي</span>
+        <h2 id="thesisName"></h2>
+        <p id="thesisAbstract"></p>
+      </div>
+
+      <h3 class="thesis-sub" data-i18n="thesisPage.docsTitle">ملفات الرسالة</h3>
+      <div class="thesis-cols" id="thesisDocs"></div>
+
+      <h3 class="thesis-sub" data-i18n="thesisPage.viewerTitle">معاينة الملف</h3>
+      <div class="thesis-tabs" id="thesisTabs"></div>
+      <div id="thesisViewer"></div>
+
+      <h3 class="thesis-sub" data-i18n="thesisPage.detailsTitle">بيانات الرسالة</h3>
+      <div class="field-grid" id="thesisFields"></div>
+
+      <div class="thesis-cols" style="margin-top:10px;">
+        <div>
+          <h3 class="thesis-sub" data-i18n="thesisPage.objectivesTitle">أهداف البحث</h3>
+          <ol class="num-list" id="thesisObjectives"></ol>
+        </div>
+        <div>
+          <h3 class="thesis-sub" data-i18n="thesisPage.hypothesesTitle">فروض البحث</h3>
+          <ol class="num-list" id="thesisHypotheses"></ol>
+        </div>
+      </div>
+
+      <h3 class="thesis-sub" data-i18n="thesisPage.methodTitle">منهج وعينة البحث</h3>
+      <div class="field-grid" id="thesisMethod"></div>
+
+      <div class="thesis-cols" style="margin-top:10px;">
+        <div>
+          <h3 class="thesis-sub" data-i18n="thesisPage.conclusionsTitle">أهم الاستنتاجات</h3>
+          <ul class="check-list" id="thesisConclusions"></ul>
+        </div>
+        <div>
+          <h3 class="thesis-sub" data-i18n="thesisPage.recommendationsTitle">التوصيات</h3>
+          <ul class="check-list" id="thesisRecs"></ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="js/translations.js"></script>
+<script src="js/main.js"></script>
+<script>
+let activeDoc = null;
+
+function renderPageContent(lang){
+  const T = SITE_DATA.thesis[lang];
+  const P = SITE_DATA.thesisPage[lang];
+
+  document.getElementById('thesisName').textContent = T.name;
+  document.getElementById('thesisAbstract').textContent = T.abstract;
+
+  const fieldHtml = f => {
+    const isNumeric = /^[0-9+\/ ]+$/.test(f.value.trim());
+    return `<div class="field-card"><div class="label">${f.label}</div><div class="value${isNumeric ? ' ltr-num' : ''}">${f.value}</div></div>`;
+  };
+  document.getElementById('thesisFields').innerHTML = T.fields.map(fieldHtml).join('');
+  document.getElementById('thesisMethod').innerHTML = T.method.map(fieldHtml).join('');
+
+  const li = a => a.map(x => `<li>${x}</li>`).join('');
+  const chk = a => a.map(x => `<li><span class="ic">✓</span><span>${x}</span></li>`).join('');
+  document.getElementById('thesisObjectives').innerHTML = li(T.objectives);
+  document.getElementById('thesisHypotheses').innerHTML = li(T.hypotheses);
+  document.getElementById('thesisConclusions').innerHTML = chk(T.conclusions);
+  document.getElementById('thesisRecs').innerHTML = chk(T.recommendations);
+
+  document.getElementById('thesisDocs').innerHTML = T.docs.map((d, i) => `
+    <div class="thesis-doc">
+      <div class="doc-icon">📄</div>
+      <span class="badge">${d.badge}</span>
+      <h3>${d.title}</h3>
+      <p>${d.desc}</p>
+      <div class="doc-actions">
+        <button class="btn btn-dark" data-view="${i}">${P.viewBtn}</button>
+        <a class="btn btn-primary" href="${d.file}" download>${P.downloadBtn}</a>
+      </div>
+    </div>`).join('');
+
+  // tabs + viewer; default = document matching the current language
+  if (activeDoc === null) activeDoc = (lang === 'ar') ? 0 : 1;
+  document.getElementById('thesisTabs').innerHTML =
+    [P.tabAr, P.tabEn].map((t, i) =>
+      `<button class="thesis-tab${i === activeDoc ? ' active' : ''}" data-tab="${i}">${t}</button>`).join('');
+  renderViewer(lang);
+
+  document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => {
+    activeDoc = +b.dataset.tab; renderPageContent(getCurrentLang());
+  }));
+  document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => {
+    activeDoc = +b.dataset.view; renderPageContent(getCurrentLang());
+    document.getElementById('thesisTabs').scrollIntoView({behavior:'smooth', block:'start'});
+  }));
+}
+
+function renderViewer(lang){
+  const T = SITE_DATA.thesis[lang], P = SITE_DATA.thesisPage[lang];
+  const f = T.docs[activeDoc].file;
+  document.getElementById('thesisViewer').innerHTML =
+    `<iframe class="pdf-frame" src="${f}#view=FitH" title="${T.docs[activeDoc].title}"></iframe>
+     <p class="pdf-fallback">${P.pdfFallback} <a href="${f}" target="_blank" rel="noopener">${P.openNew}</a></p>`;
+}
+function getCurrentLang(){ return document.documentElement.getAttribute('lang') || 'ar'; }
+window.renderPageContent = renderPageContent;
+</script>
+</body>
+</html>
