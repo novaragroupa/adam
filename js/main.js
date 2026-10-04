@@ -27,6 +27,7 @@
       ["index.html", t.home],
       ["about.html", t.about],
       ["courses.html", t.courses],
+      ["thesis.html", t.thesis],
       ["experience.html", t.experience],
       ["cv.html", t.cv]
     ];
@@ -88,7 +89,7 @@
     const year = new Date().getFullYear();
 
     const links1 = [
-      ["index.html", t.home], ["about.html", t.about], ["courses.html", t.courses], ["experience.html", t.experience]
+      ["index.html", t.home], ["about.html", t.about], ["courses.html", t.courses], ["thesis.html", t.thesis], ["experience.html", t.experience]
     ];
     const links2 = [
       ["cv.html", t.cv], ["gallery.html", t.gallery], ["certificates.html", t.certificates], ["videos.html", t.videos]

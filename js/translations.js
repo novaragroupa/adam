@@ -26,6 +26,7 @@ const SITE_DATA = {
       home: "الرئيسية",
       about: "المعلومات الأساسية",
       courses: "الدورات التدريبية",
+      thesis: "رسالة الماجستير",
       experience: "الخبرات السابقة",
       cv: "السيرة الذاتية",
       menuMore: "المزيد",
@@ -40,6 +41,7 @@ const SITE_DATA = {
       home: "Home",
       about: "Basic Information",
       courses: "Training Courses",
+      thesis: "Master's Thesis",
       experience: "Experience",
       cv: "CV / Resume",
       menuMore: "More",
@@ -239,6 +241,126 @@ const SITE_DATA = {
         "Toshky Club (2022–2024)",
         "Border Guard Club",
         "Alex City Club"
+      ]
+    }
+  },
+
+  /* -------------------------- رسالة الماجستير / Master's Thesis -------------------------- */
+  thesisPage: {
+    ar: {
+      title: "رسالة الماجستير", subtitle: "بحث علمي في تدريب السباحة — كلية التربية الرياضية للبنات، جامعة الإسكندرية",
+      eyebrow: "البحث العلمي", detailsTitle: "بيانات الرسالة",
+      objectivesTitle: "أهداف البحث", hypothesesTitle: "فروض البحث", methodTitle: "منهج وعينة البحث",
+      conclusionsTitle: "أهم الاستنتاجات", recommendationsTitle: "التوصيات",
+      docsTitle: "ملفات الرسالة",
+      viewBtn: "عرض الملف", downloadBtn: "تحميل PDF", openNew: "فتح في صفحة جديدة",
+      viewerTitle: "معاينة الملف", tabAr: "الإطار العام (عربي)", tabEn: "المقدمة والمشكلة (English)",
+      pdfFallback: "لو الملف لا يظهر في متصفحك استخدم زر التحميل."
+    },
+    en: {
+      title: "Master's Thesis", subtitle: "A scientific study in swimming training — Faculty of Physical Education for Girls, Alexandria University",
+      eyebrow: "Academic Research", detailsTitle: "Thesis Details",
+      objectivesTitle: "Research Objectives", hypothesesTitle: "Research Hypotheses", methodTitle: "Method & Sample",
+      conclusionsTitle: "Key Conclusions", recommendationsTitle: "Recommendations",
+      docsTitle: "Thesis Files",
+      viewBtn: "View File", downloadBtn: "Download PDF", openNew: "Open in new tab",
+      viewerTitle: "File Preview", tabAr: "General Framework (Arabic)", tabEn: "Introduction & Problem (English)",
+      pdfFallback: "If the file doesn't display in your browser, use the download button."
+    }
+  },
+  thesis: {
+    ar: {
+      name: "فاعلية تدريبات تحمل الأداء الفني على زمن سباحة 400 م حرة للسباحين الناشئين",
+      abstract: "بحث مقدم ضمن متطلبات الحصول على درجة الماجستير في التربية الرياضية، يهدف إلى تحسين زمن سباحة 400 متر حرة للسباحين الناشئين من خلال برنامج تدريبي مقترح لتحمل الأداء الفني، وقد طُبّق بالنادي الأولمبي المصري بالإسكندرية.",
+      fields: [
+        { label: "الباحث", value: "آدم إسماعيل محمد علي" },
+        { label: "الجامعة", value: "جامعة الإسكندرية" },
+        { label: "الكلية", value: "كلية التربية الرياضية للبنات" },
+        { label: "القسم", value: "التدريب الرياضي وعلوم الحركة" },
+        { label: "الدرجة العلمية", value: "الماجستير في التربية الرياضية" },
+        { label: "سنة الرسالة", value: "2018 م — 1439 هـ" },
+        { label: "إشراف", value: "أ.د. جليلة حسن محمد إبراهيم — أستاذ التدريب الرياضي (رياضات مائية)" },
+        { label: "إشراف", value: "د. نجلاء محمد أحمد شقرة — مدرس بقسم التدريب الرياضي وعلوم الحركة" }
+      ],
+      objectives: [
+        "تصميم برنامج تدريبي لتحسين تحمل الأداء الفني.",
+        "التعرف على تأثير تدريبات تحمل الأداء على قياسات التحمل للسباحين الناشئين.",
+        "التعرف على تأثير تدريبات تحمل الأداء على زمن سباحة 400 م حرة.",
+        "التعرف على تأثير تدريبات تحمل الأداء على مستوى الأداء المهاري لسباحة 50 م حرة."
+      ],
+      hypotheses: [
+        "توجد فروق دالة إحصائيًا في قياسات التحمل بين القياسين القبلي والبعدي لصالح المجموعة التجريبية.",
+        "توجد فروق دالة إحصائيًا في زمن سباحة 400 م حرة بين القياسين القبلي والبعدي لصالح المجموعة التجريبية.",
+        "توجد فروق دالة إحصائيًا في مستوى الأداء المهاري لسباحة 50 م حرة بين القياسين لصالح المجموعة التجريبية."
+      ],
+      method: [
+        { label: "المنهج", value: "المنهج التجريبي بتصميم مجموعتين متكافئتين (تجريبية – ضابطة)" },
+        { label: "العينة", value: "32 سباحًا ناشئًا (11 سنة) بالنادي الأولمبي المصري بالإسكندرية: 20 للعينة الأساسية و12 للدراسة الاستطلاعية" },
+        { label: "القياس القبلي", value: "28/9/2016 إلى 30/9/2016" },
+        { label: "تطبيق البرنامج", value: "1/10/2016 إلى 7/2/2017" },
+        { label: "القياس البعدي", value: "8/2/2017 إلى 10/2/2017" }
+      ],
+      conclusions: [
+        "البرنامج المقترح لتدريبات تحمل الأداء له تأثير إيجابي على تحسين القدرات البدنية المرتبطة بالتحمل.",
+        "البرنامج المقترح له تأثير إيجابي على تحسين المستوى الرقمي لسباحة 400 م حرة.",
+        "البرنامج المقترح له تأثير إيجابي على تحسين مستوى الأداء المهاري لسباحة 50 م حرة."
+      ],
+      recommendations: [
+        "الاهتمام بعنصر التحمل لأنه أساس تنمية أي سباح، خاصة قطاع الناشئين.",
+        "الاهتمام بتقنين الأحمال المستخدمة وفقًا لقدرات الناشئين.",
+        "الاهتمام بفترة إرساء التحمل في بداية الموسم بما لا يقل عن 7 أسابيع.",
+        "إجراء مزيد من الدراسات والأبحاث على طرق السباحة الأخرى."
+      ],
+      docs: [
+        { title: "الإطار العام للبحث", desc: "المقدمة ومشكلة البحث، الهدف، الفروض، والمصطلحات — باللغة العربية.", file: "pdf/thesis-arabic.pdf", badge: "العربية" },
+        { title: "Research Introduction and Problems", desc: "المقدمة والمشكلة والإجراءات والاستنتاجات والتوصيات — ترجمة معتمدة بالإنجليزية.", file: "pdf/thesis-english.pdf", badge: "English" }
+      ]
+    },
+    en: {
+      name: "The Effectiveness of Technical Performance Endurance Exercises on the Swimming Time of 400 m Freestyle for Junior Swimmers",
+      abstract: "A study submitted in fulfilment of the requirements for a Master's degree in Physical Education. It aims to improve the 400 m freestyle time of junior swimmers through a proposed technical-performance endurance training program, applied at the Egyptian Olympic Club in Alexandria.",
+      fields: [
+        { label: "Researcher", value: "Adam Ismail Mohamed Ali" },
+        { label: "University", value: "Alexandria University" },
+        { label: "Faculty", value: "Faculty of Physical Education for Girls" },
+        { label: "Department", value: "Athletic Training and Movement Sciences" },
+        { label: "Degree", value: "Master's in Physical Education" },
+        { label: "Year", value: "2018 — 1439 H" },
+        { label: "Supervisor", value: "Prof. Dr. Galila Hassan Mohamed Ibrahim — Professor of Athletic Training (Water Sports)" },
+        { label: "Supervisor", value: "Dr. Naglaa Mohamed Ahmed Shakra — Teacher, Dept. of Athletic Training and Movement Sciences" }
+      ],
+      objectives: [
+        "Design a training program to improve technical performance endurance.",
+        "Identify the impact of performance endurance exercises on endurance measurements of junior swimmers.",
+        "Identify the effect of performance endurance exercises on 400 m freestyle time.",
+        "Identify the effect of performance endurance exercises on the skill level of 50 m freestyle swimming."
+      ],
+      hypotheses: [
+        "There are statistically significant differences in endurance measurements between pre and post measurements in favor of the experimental group.",
+        "There are statistically significant differences in 400 m freestyle time between pre and post measurements in favor of the experimental group.",
+        "There are statistically significant differences in the skill level of 50 m freestyle between the two measurements in favor of the experimental group."
+      ],
+      method: [
+        { label: "Method", value: "Experimental method with two equivalent groups (experimental – control)" },
+        { label: "Sample", value: "32 junior swimmers (age 11) from the Egyptian Olympic Club, Alexandria: 20 for the main sample and 12 for the exploratory study" },
+        { label: "Pre-measurements", value: "28/9/2016 to 30/9/2016" },
+        { label: "Program implementation", value: "1/10/2016 to 7/2/2017" },
+        { label: "Post-measurements", value: "8/2/2017 to 10/2/2017" }
+      ],
+      conclusions: [
+        "The proposed performance endurance program positively affects the improvement of endurance-related physical abilities.",
+        "The proposed program positively affects the record level of 400 m freestyle swimming.",
+        "The proposed program positively affects the skill level of 50 m freestyle swimming."
+      ],
+      recommendations: [
+        "Pay attention to endurance as the basis for developing any swimmer, especially juniors.",
+        "Standardize training loads according to the abilities of juniors.",
+        "Establish endurance at the beginning of the season for no less than 7 weeks.",
+        "Conduct further studies on other swimming strokes."
+      ],
+      docs: [
+        { title: "General Research Framework", desc: "Introduction and problem, objective, hypotheses and terminology — in Arabic.", file: "pdf/thesis-arabic.pdf", badge: "العربية" },
+        { title: "Research Introduction and Problems", desc: "Introduction, problem, procedures, conclusions and recommendations — certified English translation.", file: "pdf/thesis-english.pdf", badge: "English" }
       ]
     }
   },
