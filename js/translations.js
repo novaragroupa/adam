@@ -561,7 +561,13 @@ const SITE_DATA = {
       { caption: "أثناء التحكيم في إحدى الفعاليات الرياضية", image: "gallery-09.jpg" },
       { caption: "مع إحدى السباحات على هامش المنافسة", image: "gallery-10.jpg" },
       { caption: "مع أحد السباحين الناشئين", image: "gallery-11.jpg" },
-      { caption: "جاهزون لخوض السباق", image: "gallery-12.jpg" }
+      { caption: "جاهزون لخوض السباق", image: "gallery-12.jpg" },
+      { caption: "مع سباحة حاصلة على الميدالية الفضية في بطولة المنطقة", image: "gallery-13.jpg" },
+      { caption: "مع سباحَين بعد التتويج في بطولة الخماسي الحديث", image: "gallery-14.jpg" },
+      { caption: "فرحة الميداليات البرونزية مع ثلاث سباحات", image: "gallery-15.jpg" },
+      { caption: "مع سباحين ناشئين بعد التتويج بعدة ميداليات", image: "gallery-16.jpg" },
+      { caption: "مع سباحتين بعد إحدى المنافسات", image: "gallery-17.jpg" },
+      { caption: "مع ثلاثة سباحين حاصلين على الميداليات البرونزية", image: "gallery-18.jpg" }
     ],
     en: [
       { caption: "A celebratory moment after the competition", image: "gallery-01.jpg" },
@@ -575,7 +581,13 @@ const SITE_DATA = {
       { caption: "Officiating at a sporting event", image: "gallery-09.jpg" },
       { caption: "With a swimmer during the competition", image: "gallery-10.jpg" },
       { caption: "With a young swimmer", image: "gallery-11.jpg" },
-      { caption: "Ready for the race", image: "gallery-12.jpg" }
+      { caption: "Ready for the race", image: "gallery-12.jpg" },
+      { caption: "With a swimmer who won the silver medal at the zone championship", image: "gallery-13.jpg" },
+      { caption: "With two swimmers after the podium at the modern pentathlon championship", image: "gallery-14.jpg" },
+      { caption: "Celebrating bronze medals with three swimmers", image: "gallery-15.jpg" },
+      { caption: "With junior swimmers after winning several medals", image: "gallery-16.jpg" },
+      { caption: "With two swimmers after a competition", image: "gallery-17.jpg" },
+      { caption: "With three swimmers who won bronze medals", image: "gallery-18.jpg" }
     ]
   },
 
