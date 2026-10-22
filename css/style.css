@@ -4,7 +4,7 @@
    ===================================================================== */
 
 /* ---------- Fonts ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700&family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@300;400;500;700&family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 
 /* ---------- Tokens ---------- */
 :root{
@@ -37,10 +37,13 @@ html[lang="ar"]{
   --font-head:'Cairo', 'Tajawal', sans-serif;
   --font-body:'Tajawal', 'Cairo', sans-serif;
 }
-html[lang="en"]{
+html:not([lang="ar"]){
   --font-head:'Poppins', 'Inter', sans-serif;
   --font-body:'Inter', 'Poppins', sans-serif;
 }
+html[lang="ru"]{ --font-head:'Inter', 'Poppins', sans-serif; }
+html[lang="zh"]{ --font-head:'Noto Sans SC', 'Poppins', sans-serif; --font-body:'Noto Sans SC', 'Inter', sans-serif; }
+html[lang="ja"]{ --font-head:'Noto Sans JP', 'Poppins', sans-serif; --font-body:'Noto Sans JP', 'Inter', sans-serif; }
 
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -808,3 +811,24 @@ html[dir="rtl"] .mobile-drawer-panel{transform:translateX(-100%);}
 .num-list li:last-child{border-bottom:none;}
 .num-list li::before{content:counter(n); position:absolute; inset-inline-start:0; top:12px; width:32px; height:32px; border-radius:50%; background:var(--aqua); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:.9rem;}
 @media (max-width:860px){ .thesis-cols{grid-template-columns:1fr;} .pdf-frame{height:60vh;} }
+
+
+/* =====================  Multi-language support  ===================== */
+.dropdown-panel{max-height:min(80vh, 560px); overflow-y:auto;}
+.dropdown-panel .dd-label{color:var(--ink-soft); font-size:.74rem; font-weight:700; letter-spacing:.05em; padding:6px 14px 2px;}
+.dropdown-panel a.lang-item.active{background:var(--sand-deep); color:var(--aqua);}
+.mobile-drawer a.active{color:var(--cyan-light);}
+html:not([lang="ar"]) .main-nav{gap:2px;}
+html:not([lang="ar"]) .main-nav a{padding:10px 11px; font-size:.88rem;}
+html[lang="de"] .brand-role, html[lang="ru"] .brand-role{max-width:26ch;}
+/* longer labels (German, Russian, ...): switch to the drawer menu earlier */
+@media (max-width: 1180px){
+  html:not([lang="ar"]):not([lang="en"]) .main-nav{display:none;}
+  html:not([lang="ar"]):not([lang="en"]) .mobile-nav-toggle{
+    display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:12px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    color:var(--white); font-size:1.2rem;
+  }
+}
