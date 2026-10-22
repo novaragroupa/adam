@@ -131,14 +131,15 @@ function renderPageContent(lang){
   ).join('');
 
   const c = SITE_DATA.contact[lang];
+  const c2 = SITE_DATA.common[lang];
   const items = [
     { icon:'💬', label:c.whatsapp, value:c.whatsappValue, href:`https://wa.me/${c.whatsappValue.replace('+','')}` },
     { icon:'📞', label:c.phone, value:c.phoneValue, href:`tel:${c.phoneValue}` },
     { icon:'✉️', label:c.email, value:c.emailValue, href:`mailto:${c.emailValue}` },
   ];
-  if (c.facebookUrl) items.push({ icon:'📘', label:c.facebook, value: (lang==='ar'?'صفحة الفيسبوك':'Facebook Page'), href:c.facebookUrl });
-  if (c.instagramUrl) items.push({ icon:'📷', label:c.instagram, value: (lang==='ar'?'صفحة الإنستغرام':'Instagram Page'), href:c.instagramUrl });
-  if (c.youtubeUrl) items.push({ icon:'▶️', label:c.youtube, value: (lang==='ar'?'قناة اليوتيوب':'YouTube Channel'), href:c.youtubeUrl });
+  if (c.facebookUrl) items.push({ icon:'📘', label:c.facebook, value: c2.facebookPage, href:c.facebookUrl });
+  if (c.instagramUrl) items.push({ icon:'📷', label:c.instagram, value: c2.instagramPage, href:c.instagramUrl });
+  if (c.youtubeUrl) items.push({ icon:'▶️', label:c.youtube, value: c2.youtubeChannel, href:c.youtubeUrl });
   document.getElementById('contactGrid').innerHTML = items.map(it => {
     const isNumeric = /^[0-9+@.a-zA-Z_/ -]+$/.test(it.value.trim());
     return `<a class="contact-card" href="${it.href}" target="_blank" rel="noopener">
