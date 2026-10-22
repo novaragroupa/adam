@@ -1,16 +1,61 @@
 /* =====================================================================
    main.js — منطق الموقع العام: الهيدر/الفوتر، تبديل اللغة، القوائم، الـ Lightbox
+   Languages: ar, en (inside translations.js) + de, fr, it, tr, zh, ja, ms, ru, pt
+   (each one lives in its own js/lang-XX.js file and is loaded on demand)
    ===================================================================== */
 
 (function(){
   "use strict";
 
   const LANG_KEY = "coach-site-lang";
+
+  /* ---------------- Language registry ----------------
+     To add another language: create js/lang-XX.js (same structure as the "en" data),
+     then add one line here. */
+  const LANGS = {
+    ar: { name: "العربية",          flag: "🇪🇬", dir: "rtl" },
+    en: { name: "English",          flag: "🇬🇧", dir: "ltr" },
+    de: { name: "Deutsch",          flag: "🇩🇪", dir: "ltr", file: "lang-de.js" },
+    fr: { name: "Français",         flag: "🇫🇷", dir: "ltr", file: "lang-fr.js" },
+    it: { name: "Italiano",         flag: "🇮🇹", dir: "ltr", file: "lang-it.js" },
+    tr: { name: "Türkçe",           flag: "🇹🇷", dir: "ltr", file: "lang-tr.js" },
+    zh: { name: "中文",              flag: "🇨🇳", dir: "ltr", file: "lang-zh.js" },
+    ja: { name: "日本語",            flag: "🇯🇵", dir: "ltr", file: "lang-ja.js" },
+    ms: { name: "Bahasa Melayu",    flag: "🇲🇾", dir: "ltr", file: "lang-ms.js" },
+    ru: { name: "Русский",          flag: "🇷🇺", dir: "ltr", file: "lang-ru.js" },
+    pt: { name: "Português",        flag: "🇵🇹", dir: "ltr", file: "lang-pt.js" }
+  };
+
   function getLang(){
-    return localStorage.getItem(LANG_KEY) || (typeof DEFAULT_LANG !== "undefined" ? DEFAULT_LANG : "ar");
+    let saved = null;
+    try { saved = localStorage.getItem(LANG_KEY); } catch(e){}
+    if (saved && LANGS[saved]) return saved;
+    return (typeof DEFAULT_LANG !== "undefined" && LANGS[DEFAULT_LANG]) ? DEFAULT_LANG : "ar";
   }
   function setLang(lang){
-    localStorage.setItem(LANG_KEY, lang);
+    try { localStorage.setItem(LANG_KEY, lang); } catch(e){}
+  }
+
+  /* ---------------- Language packs (lazy loaded) ---------------- */
+  function mergePack(lang){
+    const pack = (window.LANG_PACKS || {})[lang];
+    if (!pack) return false;
+    Object.keys(pack).forEach(key => {
+      if (SITE_DATA[key]) SITE_DATA[key][lang] = pack[key];
+    });
+    return true;
+  }
+
+  function loadPack(lang){
+    return new Promise(resolve => {
+      if (SITE_DATA.meta[lang]) return resolve(true);          // ar / en or already merged
+      if (!LANGS[lang] || !LANGS[lang].file) return resolve(false);
+      const s = document.createElement("script");
+      s.src = "js/" + LANGS[lang].file;
+      s.onload = () => resolve(mergePack(lang));
+      s.onerror = () => resolve(false);
+      document.head.appendChild(s);
+    });
   }
 
   const ICONS = {
@@ -21,6 +66,7 @@
   function renderHeader(lang){
     const t = SITE_DATA.nav[lang];
     const h = SITE_DATA.header[lang];
+    const common = SITE_DATA.common[lang];
     const path = currentPage();
 
     const navLinks = [
@@ -42,11 +88,19 @@
       ["certificates.html", "🏆", t.certificates],
       ["videos.html", "🎥", t.videos]
     ];
+
+    const langItems = Object.keys(LANGS).map(code =>
+      `<a href="#" class="lang-item${code === lang ? " active" : ""}" data-lang-switch="${code}" hreflang="${code}"><span>${LANGS[code].flag}</span><span>${LANGS[code].name}</span></a>`
+    ).join("");
+
     const dropdownHtml = dropdownLinks.map(([href, icon, label]) =>
       `<a href="${href}"><span>${icon}</span><span>${label}</span></a>`
     ).join("") + `<div class="dropdown-divider"></div>` +
-      `<a href="#" data-lang-switch="ar"><span>🇪🇬</span><span>${t.langAr}</span></a>` +
-      `<a href="#" data-lang-switch="en"><span>🇬🇧</span><span>${t.langEn}</span></a>`;
+      `<div class="dd-label">${common.language}</div>` + langItems;
+
+    const drawerLangItems = Object.keys(LANGS).map(code =>
+      `<a href="#" class="${code === lang ? "active" : ""}" data-lang-switch="${code}">${LANGS[code].flag} ${LANGS[code].name}</a>`
+    ).join("");
 
     return `
     <div class="header-inner">
@@ -68,15 +122,14 @@
     </div>
     <div class="mobile-drawer" id="mobileDrawer">
       <div class="mobile-drawer-panel">
-        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="${SITE_DATA.common[lang].close}">×</button>
+        <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="${common.close}">×</button>
         <div style="clear:both;"></div>
         <span class="section-label">${t.home}</span>
         ${navLinks.map(([href,label]) => `<a href="${href}">${label}</a>`).join("")}
         <span class="section-label">${t.menuMore}</span>
         ${dropdownLinks.map(([href,icon,label]) => `<a href="${href}">${icon} ${label}</a>`).join("")}
-        <span class="section-label">${lang === 'ar' ? 'اللغة' : 'Language'}</span>
-        <a href="#" data-lang-switch="ar">🇪🇬 ${t.langAr}</a>
-        <a href="#" data-lang-switch="en">🇬🇧 ${t.langEn}</a>
+        <span class="section-label">${common.language}</span>
+        ${drawerLangItems}
       </div>
     </div>`;
   }
@@ -169,10 +222,18 @@
   }
 
   /* ---------------- Language application ---------------- */
-  function applyLanguage(lang){
+  let applyToken = 0;
+  async function applyLanguage(lang){
+    if (!LANGS[lang]) lang = "ar";
+    const token = ++applyToken;
+
+    const ok = await loadPack(lang);
+    if (token !== applyToken) return;          // a newer language click won
+    if (!ok) lang = SITE_DATA.meta[lang] ? lang : "en";
+
     setLang(lang);
     document.documentElement.setAttribute("lang", lang);
-    document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    document.documentElement.setAttribute("dir", LANGS[lang].dir);
 
     const headerEl = document.getElementById("site-header");
     const footerEl = document.getElementById("site-footer");
@@ -263,8 +324,7 @@
 
   /* ---------------- Init ---------------- */
   document.addEventListener("DOMContentLoaded", () => {
-    const lang = getLang();
-    applyLanguage(lang);
+    applyLanguage(getLang());
   });
 
 })();

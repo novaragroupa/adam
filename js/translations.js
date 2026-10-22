@@ -708,14 +708,22 @@ const SITE_DATA = {
       playVideo: "تشغيل",
       viewLarge: "تكبير",
       backToTop: "العودة للأعلى",
-      loading: "جاري التحميل..."
+      loading: "جاري التحميل...",
+      language: "اللغة",
+      facebookPage: "صفحة الفيسبوك",
+      instagramPage: "صفحة الإنستغرام",
+      youtubeChannel: "قناة اليوتيوب"
     },
     en: {
       close: "Close",
       playVideo: "Play",
       viewLarge: "View Large",
       backToTop: "Back to top",
-      loading: "Loading..."
+      loading: "Loading...",
+      language: "Language",
+      facebookPage: "Facebook Page",
+      instagramPage: "Instagram Page",
+      youtubeChannel: "YouTube Channel"
     }
   }
 };
